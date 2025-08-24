@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# boson-plugin Changelog
+# Boson PHP Plugin Changelog
 
 ## [Unreleased]
 ### Added
