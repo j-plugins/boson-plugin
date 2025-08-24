@@ -13,9 +13,9 @@ object IndexUtil {
             .toList()
     }
 
-    fun findAliases(project: Project, alias: String): List<String> {
+    fun findAliases(project: Project, fqn: String): List<String> {
         return FileBasedIndex.getInstance()
-            .getValues(WebComponentsDefinitionIndex.identity, alias, GlobalSearchScope.allScope(project))
+            .getValues(WebComponentsAliasesIndex.identity, fqn, GlobalSearchScope.allScope(project))
             .flatten()
     }
 

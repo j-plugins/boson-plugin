@@ -21,7 +21,7 @@ abstract class AbstractIndex<T : Any> : FileBasedIndexExtension<String, T>() {
 
     override fun getValueExternalizer(): DataExternalizer<T> = ObjectStreamDataExternalizer<T>()
 
-    override fun getVersion() = 1
+    override fun getVersion() = 2
 }
 
 abstract class AbstractBosonJsonIndex<T : Any> : AbstractIndex<T>() {

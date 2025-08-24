@@ -21,7 +21,13 @@
         <xml.tagNameProvider implementation="com.github.xepozz.boson.components.WebComponentsTagNameProvider"/>
         <xml.elementDescriptorProvider
                 implementation="com.github.xepozz.boson.components.WebComponentsTagDescriptorProvider"/>
-
+        <codeInsight.declarativeInlayProvider
+                implementationClass="com.github.xepozz.boson.components.inlay.WebComponentsInlayHintsProvider"
+                group="CODE_VISION_GROUP"
+                isEnabledByDefault="true"
+                language="PHP"
+                nameKey="web_components.name"
+                providerId="boson-component-name"/>
         <fileBasedIndex implementation="com.github.xepozz.boson.index.ConfigIndex"/>
         <fileBasedIndex implementation="com.github.xepozz.boson.index.WebComponentsDefinitionIndex"/>
         <fileBasedIndex implementation="com.github.xepozz.boson.index.WebComponentsAliasesIndex"/>
