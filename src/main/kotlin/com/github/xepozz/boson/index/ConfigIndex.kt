@@ -18,7 +18,6 @@ class ConfigIndex : AbstractBosonJsonIndex<ConfigIndexType>() {
     override fun getIndexer() = object : DataIndexer<String, ConfigIndexType, FileContent> {
         override fun map(inputData: FileContent): Map<String, ConfigIndexType> {
             val jsonFile = inputData.psiFile as? JsonFile ?: return emptyMap()
-            val document = jsonFile.fileDocument
             val root = jsonFile.topLevelValue ?: return emptyMap()
 
             val associatedMap = root.children
