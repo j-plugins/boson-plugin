@@ -19,6 +19,10 @@
 
 <!-- Plugin description -->
 Support of [BosonPHP](https://github.com/boson-php) for IntelliJ IDEA.
+
+Boson is a modern, lightweight, and fast PHP framework for building native applications.
+
+Read me: https://bosonphp.com/
 <!-- Plugin description end -->
 
 ## Installation
