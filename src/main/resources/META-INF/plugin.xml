@@ -12,9 +12,6 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.xepozz.boson.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.xepozz.boson.startup.MyProjectActivity"/>
-
         <codeInsight.lineMarkerProvider
                 language="PHP"
                 implementationClass="com.github.xepozz.boson.components.WebComponentsLineMarkerProvider"/>
