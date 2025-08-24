@@ -1,9 +1,10 @@
 package com.github.xepozz.boson.components.inlay
 
 import com.github.xepozz.boson.index.IndexUtil
-import com.intellij.codeInsight.hints.declarative.AboveLineIndentedPosition
+import com.intellij.codeInsight.hints.declarative.EndOfLinePosition
 import com.intellij.codeInsight.hints.declarative.HintFormat
 import com.intellij.codeInsight.hints.declarative.InlayHintsProvider
+import com.intellij.codeInsight.hints.declarative.InlayPosition
 import com.intellij.codeInsight.hints.declarative.InlayTreeSink
 import com.intellij.codeInsight.hints.declarative.SharedBypassCollector
 import com.intellij.openapi.editor.Editor
@@ -29,8 +30,17 @@ class WebComponentsInlayHintsProvider : InlayHintsProvider {
 
             if (names.isEmpty()) return
 
+            val textOffset = element.textOffset
+            val position = try {
+                val a = Class.forName("com.intellij.codeInsight.hints.declarative.AboveLineIndentedPosition")
+                a.constructors.first().newInstance(textOffset, 0, 0) as InlayPosition
+            } catch (ignored: ClassNotFoundException) {
+//                InlineInlayPosition(textOffset, true)
+                EndOfLinePosition(element.containingFile.text.substring(0, textOffset).count { it == '\n' }, 0)
+            }
+
             sink.addPresentation(
-                AboveLineIndentedPosition(element.textOffset),
+                position,
                 null,
                 null,
                 HintFormat.default
