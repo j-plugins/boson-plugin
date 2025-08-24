@@ -6,7 +6,8 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.json</depends>
-     <depends>com.jetbrains.php</depends>
+    <depends>com.jetbrains.php</depends>
+    <depends>HtmlTools</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
@@ -17,6 +18,12 @@
         <codeInsight.lineMarkerProvider
                 language="PHP"
                 implementationClass="com.github.xepozz.boson.components.WebComponentsLineMarkerProvider"/>
+        <xml.tagNameProvider implementation="com.github.xepozz.boson.components.WebComponentsTagNameProvider"/>
+        <xml.elementDescriptorProvider
+                implementation="com.github.xepozz.boson.components.WebComponentsTagDescriptorProvider"/>
+
         <fileBasedIndex implementation="com.github.xepozz.boson.index.ConfigIndex"/>
+        <fileBasedIndex implementation="com.github.xepozz.boson.index.WebComponentsDefinitionIndex"/>
+        <fileBasedIndex implementation="com.github.xepozz.boson.index.WebComponentsAliasesIndex"/>
     </extensions>
 </idea-plugin>

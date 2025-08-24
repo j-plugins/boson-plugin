@@ -27,3 +27,7 @@ abstract class AbstractIndex<T : Any> : FileBasedIndexExtension<String, T>() {
 abstract class AbstractBosonJsonIndex<T : Any> : AbstractIndex<T>() {
     override fun getInputFilter() = FileBasedIndex.InputFilter { file -> file.name == "boson.json" }
 }
+
+abstract class AbstractPhpIndex<T : Any> : AbstractIndex<T>() {
+    override fun getInputFilter() = FileBasedIndex.InputFilter { file -> file.extension == "php" }
+}

@@ -1,6 +1,7 @@
 package com.github.xepozz.boson.components
 
 import com.github.xepozz.boson.PHPSdk
+import com.github.xepozz.boson.index.IndexUtil
 import com.intellij.codeInsight.daemon.RelatedItemLineMarkerInfo
 import com.intellij.codeInsight.daemon.RelatedItemLineMarkerProvider
 import com.intellij.codeInsight.navigation.NavigationGutterIconBuilder
@@ -14,26 +15,9 @@ class WebComponentsLineMarkerProvider : RelatedItemLineMarkerProvider() {
         element: PsiElement,
         result: MutableCollection<in RelatedItemLineMarkerInfo<*>>
     ) {
+        return
+        // temporary disabled
         val element = element as? PhpClass ?: return
-
-        var isWebComponent = false
-        for (classReference in element.extendsList.referenceElements) {
-            val phpClass = classReference.resolve() as? PhpClass ?: continue
-
-            PhpClassHierarchyUtils.processSuperClasses(
-                phpClass,
-                true,
-                true
-            ) {
-                if (it.fqn == PHPSdk.WEB_COMPONENT) {
-                    isWebComponent = true
-                    return@processSuperClasses false
-                }
-
-                true
-            }
-        }
-        if (!isWebComponent) return
 
         result.add(
             NavigationGutterIconBuilder
