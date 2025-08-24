@@ -12,5 +12,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="com.github.xepozz.boson.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="com.github.xepozz.boson.startup.MyProjectActivity" />
+
+        <fileBasedIndex implementation="com.github.xepozz.boson.index.ConfigIndex" />
     </extensions>
 </idea-plugin>
