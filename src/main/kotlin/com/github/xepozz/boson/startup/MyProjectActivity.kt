@@ -1,4 +1,4 @@
-package com.github.xepozz.bosonplugin.startup
+package com.github.xepozz.boson.startup
 
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project

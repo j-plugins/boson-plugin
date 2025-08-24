@@ -1,9 +1,9 @@
-package com.github.xepozz.bosonplugin.services
+package com.github.xepozz.boson.services
 
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
-import com.github.xepozz.bosonplugin.MyBundle
+import com.github.xepozz.boson.MyBundle
 
 @Service(Service.Level.PROJECT)
 class MyProjectService(project: Project) {

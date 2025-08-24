@@ -1,4 +1,4 @@
-package com.github.xepozz.bosonplugin
+package com.github.xepozz.boson
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
