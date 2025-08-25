@@ -1,11 +1,11 @@
 package com.github.xepozz.boson.components.inlay
 
 import com.github.xepozz.boson.index.IndexUtil
-import com.intellij.codeInsight.hints.declarative.EndOfLinePosition
 import com.intellij.codeInsight.hints.declarative.HintFormat
 import com.intellij.codeInsight.hints.declarative.InlayHintsProvider
 import com.intellij.codeInsight.hints.declarative.InlayPosition
 import com.intellij.codeInsight.hints.declarative.InlayTreeSink
+import com.intellij.codeInsight.hints.declarative.InlineInlayPosition
 import com.intellij.codeInsight.hints.declarative.SharedBypassCollector
 import com.intellij.openapi.editor.Editor
 import com.intellij.psi.PsiElement
@@ -30,13 +30,17 @@ class WebComponentsInlayHintsProvider : InlayHintsProvider {
 
             if (names.isEmpty()) return
 
-            val textOffset = element.textOffset
-            val position = try {
-                val a = Class.forName("com.intellij.codeInsight.hints.declarative.AboveLineIndentedPosition")
-                a.constructors.first().newInstance(textOffset, 0, 0) as InlayPosition
+            var textOffset: Int
+            var position: InlayPosition
+            try {
+                textOffset = element.textRange.startOffset
+
+                val reflection = Class.forName("com.intellij.codeInsight.hints.declarative.AboveLineIndentedPosition")
+                position = reflection.constructors.first().newInstance(textOffset, 0, 0) as InlayPosition
             } catch (ignored: ClassNotFoundException) {
-//                InlineInlayPosition(textOffset, true)
-                EndOfLinePosition(element.containingFile.text.substring(0, textOffset).count { it == '\n' }, 0)
+                textOffset = element.textRange.startOffset - 1
+
+                position = InlineInlayPosition(textOffset, true)
             }
 
             sink.addPresentation(
@@ -45,7 +49,7 @@ class WebComponentsInlayHintsProvider : InlayHintsProvider {
                 null,
                 HintFormat.default
             ) {
-                this.text("As: $names")
+                text("As: $names")
             }
         }
 
