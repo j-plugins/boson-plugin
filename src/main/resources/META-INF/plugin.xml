@@ -24,6 +24,8 @@
                 language="PHP"
                 nameKey="web_components.name"
                 providerId="boson-component-name"/>
+        <referencesSearch implementation="com.github.xepozz.boson.components.usage.WebComponentsReferenceSearcher"/>
+
         <fileBasedIndex implementation="com.github.xepozz.boson.index.ConfigIndex"/>
         <fileBasedIndex implementation="com.github.xepozz.boson.index.WebComponentsDefinitionIndex"/>
         <fileBasedIndex implementation="com.github.xepozz.boson.index.WebComponentsAliasesIndex"/>
